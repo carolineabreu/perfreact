@@ -26,6 +26,15 @@
 # Virtualização
 
     - permite que seja mostrado em tela, no html, apenas itens que estejam visíveis no navegador do usuário
+    - para quando tem muito itens para ser exibido em tela
+    - ex: SearchResults
+
+# Bundle Analyzer
+
+    - para ver as dependências que estão sendo empacotadas junto com o app e o tanto que estão impactando no código final
+    - utilização:
+        - pacote de dependências: next bundle analyzer
+        - instalar, criar um arquivo config e rodar o comando ANALYZER=true npm run build
 
 # Memo
 

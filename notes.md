@@ -23,6 +23,10 @@
         - se for import default, fazer desse jeito acima, caso não seja default: import("./path.xx").then(mod) => mod.importName
         - o segundo parâmetro é opcional, é uma trativa do que queremos que aconteça enquanto está carregando
 
+# Virtualização
+
+    - permite que seja mostrado em tela, no html, apenas itens que estejam visíveis no navegador do usuário
+
 # Memo
 
     - utilização:

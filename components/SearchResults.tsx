@@ -1,4 +1,6 @@
 //import { useMemo } from "react";
+import { List, ListRowRenderer } from "react-virtualized";
+
 import { ProductItem } from "./ProductItem";
 
 interface SearchResultsProps {
@@ -21,13 +23,29 @@ export function SearchResults({ results, onAddToWishlist, totalPrice }: SearchRe
   //   }, 0);
   // }, [results]);
 
+  const rowRenderer: ListRowRenderer = ({ index, key, style }) => {
+    return (
+      <div key={key} style={style}>
+        <ProductItem product={results[index]} onAddToWishlist={onAddToWishlist} />
+      </div>
+    );
+  };
+
   return (
     <div>
       <h2>{totalPrice}</h2>
-
-      {results.map((product) => {
+      <List
+        height={300}
+        rowHeight={30}
+        width={900}
+        overscanRowCount={5}
+        rowCount={results.length}
+        rowRenderer={rowRenderer}
+      />
+      {/**para ser automático width e height, importar auto de dentro do react-virtualized */}
+      {/* {results.map((product) => {
         return <ProductItem key={product.id} product={product} onAddToWishlist={onAddToWishlist} />;
-      })}
+      })} */}
     </div>
   );
 }

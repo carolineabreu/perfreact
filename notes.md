@@ -4,6 +4,15 @@
     2. Comparar essa nova versão com a versão anterior já salva na página;
     3. Se houver alterações, o React "renderiza" essa nova versão em tela;
 
+# Geral
+
+    - Toda vez que um componente for renderizado(tiver um estado ou propriedade alterada, ou algum componente por volta dele renderizar), todas as funções que estão dentro dele vão ser recriadas do 0, vão ocupar um novo espaço na memoria.
+
+# Igualdade referencial
+
+    - igualdade referencial é uma forma de comparação duas variáveis dentro do javascript(é como o react faz), que é verificar se elas ocupam o mesmo espaço em memoria. Quando criamos uma nova informação no react (mesmo que ela já existia antes), estamos ocupando um novo espaço na memoria
+    - a key dentro de um loop ajuda a igualdade referencial do react
+
 # Memo
 
     - utilização:
@@ -18,10 +27,18 @@
 # useMemo
 
     - Funcionalidade:
-        - tem uma única funcionalidade: evitar que alguma coisa que ocupe muito processamento(como um calculo) seja refeito toda vez que aquele componente renderizar. Podemos usar o useMemo para memorizar(memorization) entre as renderizações do componente o valor para que não seja recalculado toda vez do 0
+        - evitar que alguma coisa que ocupe muito processamento(como um calculo) seja refeito toda vez que aquele componente renderizar. Podemos usar o useMemo para memorizar(memorization) entre as renderizações do componente o valor para que não seja recalculado toda vez do 0
     - Utilização:
         const xxx = useMemo(() => {função do cálculo}, [dependências])
     - quando usar o useMemo?
         1. Cálculos pesados - se o cálculo for muito simples e o usar o useMemo, pode ficar mais pesado com ele
         2. Igualdade referencial* (quando repassamos a informação a um componente filho) - se o cálculo não for pesado, mas a informação for repassada para os filhos, vale a pena utiliza-lo porque ele vai evitar que a informação seja criada do zero e o react no algoritmo de comparação dos dois valores faça uma comparação se um valor é igual ao outro e acabe não batendo porque eles ocupam um lugar diferente na memoria
-    * igualdade referencial é uma forma de comparação duas variáveis dentro do javascript(é como o react faz), que é verificar se elas ocupam o mesmo espaço em memoria. Quando criamos uma nova informação no react (mesmo que ela já existia antes), estamos ocupando um novo espaço na memoria
+
+# useCallback
+
+    Funcionalidades/quando usar
+        - quando queremos memorizar uma função e não um valor
+        - quando criamos uma função e ela vai ser repassada para os componentes filhos
+        - funções de contexto (porque vão ser usada em vários outros componentes)
+    utilização
+        const xxx = useCallback(função, [dependências]) dependências(como no useEffect) é opcional

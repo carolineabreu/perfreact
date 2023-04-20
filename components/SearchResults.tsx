@@ -8,9 +8,10 @@ interface SearchResultsProps {
     price: number;
     title: string;
   }>;
+  onAddToWishlist: (id: number) => void;
 }
 
-export function SearchResults({ results }: SearchResultsProps) {
+export function SearchResults({ results, onAddToWishlist }: SearchResultsProps) {
   // useMemo recebe dois parâmetros: uma função como primeiro parâmetro que precisa devolver o resultado e o segundo parâmetro é um array de dependências (como no useEffect), pra dizer quando que queremos que o cálculo seja refeito
 
   const totalPrice = useMemo(() => {
@@ -24,7 +25,7 @@ export function SearchResults({ results }: SearchResultsProps) {
       <h2>{totalPrice}</h2>
 
       {results.map((product) => {
-        return <ProductItem key={product.id} product={product} />;
+        return <ProductItem key={product.id} product={product} onAddToWishlist={onAddToWishlist} />;
       })}
     </div>
   );

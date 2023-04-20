@@ -1,6 +1,5 @@
-import { useMemo } from "react";
+//import { useMemo } from "react";
 import { ProductItem } from "./ProductItem";
-import { ReactNode } from "react";
 
 interface SearchResultsProps {
   totalPrice: number;

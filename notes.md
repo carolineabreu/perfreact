@@ -14,6 +14,15 @@
     - igualdade referencial é uma forma de comparação duas variáveis dentro do javascript(é como o react faz), que é verificar se elas ocupam o mesmo espaço em memoria. Quando criamos uma nova informação no react (mesmo que ela já existia antes), estamos ocupando um novo espaço na memoria
     - a key dentro de um loop ajuda a igualdade referencial do react
 
+# Code-Splitting (lazy-loading)
+
+    - funcionalidade de importar algo somente no momento que for utilizar (componentes, funções, bibliotecas...)
+    - lazy-loading: carregar o código do componente apenas quando ele precisar ser exibido em tela (ex: modal e AddProductToWishlist)
+    - utilização:
+        - const xxx = dynamic(() => import("./path.xx"), { loading: () => <tag>xxx</tag> })
+        - se for import default, fazer desse jeito acima, caso não seja default: import("./path.xx").then(mod) => mod.importName
+        - o segundo parâmetro é opcional, é uma trativa do que queremos que aconteça enquanto está carregando
+
 # Memo
 
     - utilização:

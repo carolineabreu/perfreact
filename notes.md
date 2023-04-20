@@ -7,6 +7,7 @@
 # Geral
 
     - Toda vez que um componente for renderizado(tiver um estado ou propriedade alterada, ou algum componente por volta dele renderizar), todas as funções que estão dentro dele vão ser recriadas do 0, vão ocupar um novo espaço na memoria.
+    - Fazer os cálculos dentro da onde você está trazendo as informações e não na hora da renderização (ex: totalPrice dentro do handleSearch) e formatações também é indicado (como formatar data, valores...). Isso evita ficar fazendo memos e menor custo de processamento possível.
 
 # Igualdade referencial
 
